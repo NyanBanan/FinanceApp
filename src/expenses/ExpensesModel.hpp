@@ -11,26 +11,31 @@
 
 namespace expenses {
 
-    enum ExpensesRoles{
-        WhereRole = Qt::UserRole + 1,
-        SizeRole
-    };
-
-    class ExpensesModel : public QAbstractItemModel{
+    class ExpensesModel : public QAbstractListModel {
     public:
+        enum Roles {
+            FirstRole = Qt::UserRole + 1,    //Don't use this role. This role uses only for column counting
+                                             //If you need new role, place them after this role
+            WhereRole,
+            SizeRole,
+
+            LastRole    //Don't use this role. This role uses only for column counting
+                        //If you need new role, place them before this role
+        };
+
         ExpensesModel() = default;
 
-        QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
-//        QModelIndex parent(const QModelIndex &child) const override;
-//        int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-//        int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-//        QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+        [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        [[nodiscard]] QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
-        bool hasIndex(int row, int column) const;
+        void insertRow(int row, const Expenses& expenses);
+        void insertRows(int row, int count, QList<Expenses> expenses);
 
     private:
+        [[nodiscard]] bool hasData(int row) const;
+
         QList<Expenses> _expenses;
     };
 
-}
+}    //namespace expenses
 #endif    //FINANCEAPP_EXPENSESMODEL_HPP

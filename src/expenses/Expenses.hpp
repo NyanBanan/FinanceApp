@@ -21,6 +21,8 @@ namespace expenses {
         [[nodiscard]] quint64 getSize() const;
         void setSize(quint64 size);
 
+        QString toString() const;
+
     private:
         QString _where;
         quint64 _size{0};

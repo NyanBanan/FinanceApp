@@ -15,7 +15,7 @@ namespace expenses {
     }
 
     void Expenses::setWhere(QString where) {
-        _where = where;
+        _where = std::forward<QString>(where);
     }
 
     quint64 Expenses::getSize() const {
@@ -24,5 +24,9 @@ namespace expenses {
 
     void Expenses::setSize(quint64 size) {
         _size = size;
+    }
+
+    QString Expenses::toString() const {
+        return QString("%1 %2").arg(getWhere()).arg(getSize());
     }
 }    //namespace expenses
