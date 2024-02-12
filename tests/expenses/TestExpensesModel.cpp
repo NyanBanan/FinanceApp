@@ -40,11 +40,11 @@ void TestExpensesModel::testData() {
 void TestExpensesModel::testRowCount() {
     expenses::ExpensesModel model;
 
-    QCOMPARE(model.rowCount(), 0);
+    QCOMPARE(model.rowCount(), 1);
 
     expenses::Expenses expenses{"Test", 1000};
 
     model.insertRow(0, expenses);
 
-    QCOMPARE(model.rowCount(), 1);
+    QCOMPARE(model.rowCount(), 2);
 }

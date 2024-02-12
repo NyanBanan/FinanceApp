@@ -5,13 +5,16 @@
 #ifndef FINANCEAPP_EXPENSESMODEL_HPP
 #define FINANCEAPP_EXPENSESMODEL_HPP
 
-#include <QAbstractItemModel>
+#include <QAbstractListModel>
+#include <QtQml>
 
 #include "Expenses.hpp"
 
 namespace expenses {
 
-    class ExpensesModel : public QAbstractListModel {
+    class ExpensesModel : public QAbstractItemModel {
+        Q_OBJECT
+        QML_ELEMENT
     public:
         enum Roles {
             FirstRole = Qt::UserRole + 1,    //Don't use this role. This role uses only for column counting
@@ -23,18 +26,22 @@ namespace expenses {
                         //If you need new role, place them before this role
         };
 
-        ExpensesModel() = default;
-
+        [[nodiscard]] QModelIndex parent(const QModelIndex &child) const override;
+        [[nodiscard]] QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
         [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        [[nodiscard]] int columnCount(const QModelIndex &parent = QModelIndex()) const override;
         [[nodiscard]] QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        [[nodiscard]] QHash<int, QByteArray> roleNames() const override;
 
+        Q_INVOKABLE
         void insertRow(int row, const Expenses& expenses);
+        Q_INVOKABLE
         void insertRows(int row, int count, QList<Expenses> expenses);
 
     private:
-        [[nodiscard]] bool hasData(int row) const;
+        [[nodiscard]] bool hasIndex(int row, int column) const;
 
-        QList<Expenses> _expenses;
+        QList<Expenses> _expenses{{"deleteOnReleaseAndChangeTest", 2100}};
     };
 
 }    //namespace expenses

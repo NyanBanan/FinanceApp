@@ -10,5 +10,5 @@ add_executable(TestExpensesModel ${CMAKE_CURRENT_LIST_DIR}/TestExpensesModel.cpp
 
 add_test(NAME TestExpensesModel COMMAND TestExpensesModel)
 
-target_link_libraries(TestExpensesModel PRIVATE Qt6::Test)
+target_link_libraries(TestExpensesModel PRIVATE Qt6::Test Qt6::Qml)
 
