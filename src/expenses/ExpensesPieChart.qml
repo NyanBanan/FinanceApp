@@ -10,13 +10,10 @@ ChartView {
     PieSeries {
         id: pieSeries
     }
-    ExpensesModel {
-        id: expensesModel
-    }
     VPieModelMapper {
         id: mapper
         series: pieSeries
-        model: expensesModel
+        model: ExpensesModel{}
         labelsColumn: 0
         valuesColumn: 1
     }

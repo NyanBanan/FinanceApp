@@ -5,11 +5,12 @@
 #ifndef FINANCEAPP_EXPENSES_HPP
 #define FINANCEAPP_EXPENSES_HPP
 
+#include <QObject>
 #include <QString>
 
 namespace expenses {
 
-    class Expenses {
+    class Expenses{
     public:
         Expenses() = default;
         explicit Expenses(QString where);
@@ -21,7 +22,7 @@ namespace expenses {
         [[nodiscard]] quint64 getSize() const;
         void setSize(quint64 size);
 
-        QString toString() const;
+        [[nodiscard]] QString toString() const;
 
     private:
         QString _where;

@@ -9,5 +9,6 @@ qt_add_qml_module(expenses
             ExpensesModel.cpp
             ExpensesModel.hpp
         QML_FILES
+            ExpensesList.qml
             ExpensesPieChart.qml
 )

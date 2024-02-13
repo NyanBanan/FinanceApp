@@ -5,8 +5,8 @@ project(TestExpenses)
 find_package(Qt6 REQUIRED COMPONENTS Test)
 
 add_executable(TestExpensesModel ${CMAKE_CURRENT_LIST_DIR}/TestExpensesModel.cpp
-        ../../src/expenses/ExpensesModel.cpp
-        ../../src/expenses/Expenses.cpp)
+         ${CMAKE_CURRENT_LIST_DIR}/../../src/expenses/ExpensesModel.cpp
+         ${CMAKE_CURRENT_LIST_DIR}/../../src/expenses/Expenses.cpp)
 
 add_test(NAME TestExpensesModel COMMAND TestExpensesModel)
 

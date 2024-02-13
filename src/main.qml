@@ -2,15 +2,31 @@ import QtCore
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQml
 
 import Qt.labs.platform
-import expenses
 
-ApplicationWindow {
+FinanceAppMainWindow {
     id: root
-    visible: true
-    minimumWidth: 300
-    minimumHeight: 400
 
-    ExpensesPieChart{}
+    header: Row {
+        TabBar {
+            id: bar
+            wheelEnabled: true
+            width: root.width
+            currentIndex: view.currentIndex
+
+            Repeater {
+                delegate: TabButton {
+                    text: model.name
+                    width: bar.width / 4
+                }
+                model: pages
+            }
+        }
+    }
+
+    Binding{
+        root.view.currentIndex: bar.currentIndex
+    }
 }

@@ -5,7 +5,7 @@ project(TestExpenses)
 find_package(Qt6 REQUIRED COMPONENTS Core Test)
 
 add_executable(TestExpenses ${CMAKE_CURRENT_LIST_DIR}/TestExpenses.cpp
-        ../../src/expenses/Expenses.cpp)
+        ${CMAKE_CURRENT_LIST_DIR}/../../src/expenses/Expenses.cpp)
 
 add_test(NAME TestExpenses COMMAND TestExpenses)
 

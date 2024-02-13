@@ -33,10 +33,9 @@ namespace expenses {
         [[nodiscard]] QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
         [[nodiscard]] QHash<int, QByteArray> roleNames() const override;
 
-        Q_INVOKABLE
-        void insertRow(int row, const Expenses& expenses);
-        Q_INVOKABLE
-        void insertRows(int row, int count, QList<Expenses> expenses);
+    public slots:
+        void insertRow(int row, const expenses::Expenses& expenses);
+        void insertRows(int row, int count, QList<expenses::Expenses> expenses);
 
     private:
         [[nodiscard]] bool hasIndex(int row, int column) const;

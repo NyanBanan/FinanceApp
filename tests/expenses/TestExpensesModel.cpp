@@ -23,7 +23,8 @@ void TestExpensesModel::testInsert() {
 
     model.insertRow(0, expenses);
 
-    QCOMPARE(model.data(model.index(0)), expenses.toString());
+    QCOMPARE(model.data(model.index(0,0)), expenses.getWhere());
+    QCOMPARE(model.data(model.index(0,1)), expenses.getSize());
 }
 
 void TestExpensesModel::testData() {
@@ -32,9 +33,8 @@ void TestExpensesModel::testData() {
 
     model.insertRow(0, expenses);
 
-    QCOMPARE(model.data(model.index(0)), expenses.toString());
-    QCOMPARE(model.data(model.index(0), expenses::ExpensesModel::Roles::WhereRole), expenses.getWhere());
-    QCOMPARE(model.data(model.index(0), expenses::ExpensesModel::Roles::SizeRole), expenses.getSize());
+    QCOMPARE(model.data(model.index(0, 0), expenses::ExpensesModel::Roles::WhereRole), expenses.getWhere());
+    QCOMPARE(model.data(model.index(0, 1), expenses::ExpensesModel::Roles::SizeRole), expenses.getSize());
 }
 
 void TestExpensesModel::testRowCount() {
