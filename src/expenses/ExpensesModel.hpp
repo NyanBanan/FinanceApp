@@ -21,6 +21,7 @@ namespace expenses {
                                              //If you need new role, place them after this role
             WhereRole,
             SizeRole,
+            DateRole,
 
             LastRole    //Don't use this role. This role uses only for column counting
                         //If you need new role, place them before this role

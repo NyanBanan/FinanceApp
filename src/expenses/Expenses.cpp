@@ -10,6 +10,8 @@ namespace expenses {
 
     Expenses::Expenses(QString where, quint64 size) : _where(where), _size(size) {}
 
+    Expenses::Expenses(QString where, quint64 size, QDateTime date): _where(where), _size(size), _date(date) {}
+
     const QString& Expenses::getWhere() const {
         return _where;
     }
@@ -26,7 +28,15 @@ namespace expenses {
         _size = size;
     }
 
+    const QDateTime& Expenses::getDate() const {
+        return _date;
+    }
+
+    void Expenses::setDate(const QDateTime& date) {
+        _date = date;
+    }
+
     QString Expenses::toString() const {
-        return QString("%1 %2").arg(getWhere()).arg(getSize());
+        return QString("%1 %2 %3").arg(getWhere()).arg(getSize()).arg(getDate().toString());
     }
 }    //namespace expenses

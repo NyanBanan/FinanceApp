@@ -36,13 +36,18 @@ namespace expenses {
     QVariant ExpensesModel::data(const QModelIndex& index, int role) const {
         switch (role) {
             case Qt::DisplayRole: {
-                switch(index.column()){
+                switch (index.column()) {
                     case WhereRole - FirstRole - 1: {
                         return QVariant::fromValue(_expenses[index.row()].getWhere());
                     }
                     case SizeRole - FirstRole - 1: {
                         return QVariant::fromValue(_expenses[index.row()].getSize());
                     }
+                    case DateRole - FirstRole - 1: {
+                        return QVariant::fromValue(_expenses[index.row()].getDate());
+                    }
+                    default:
+                        return {};
                 }
             }
             case WhereRole: {
@@ -50,6 +55,9 @@ namespace expenses {
             }
             case SizeRole: {
                 return QVariant::fromValue(_expenses[index.row()].getSize());
+            }
+            case DateRole: {
+                return QVariant::fromValue(_expenses[index.row()].getDate());
             }
             default:
                 return {};
