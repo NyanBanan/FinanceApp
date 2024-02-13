@@ -12,6 +12,7 @@ private slots:
     void testGetSetWhere();
     void testGetSetSize();
     void testGetSetDate();
+    void testToString();
 };
 
 QTEST_MAIN(TestExpenses)
@@ -44,7 +45,7 @@ void TestExpenses::testGetSetSize() {
 }
 
 void TestExpenses::testGetSetDate() {
-    QDateTime date{};
+    QDateTime date{{1999, 1, 1}, {0, 0}};
 
     expenses::Expenses tst_expenses;
     tst_expenses.setDate(date);
@@ -54,4 +55,12 @@ void TestExpenses::testGetSetDate() {
     expenses::Expenses tst_expenses1{"", 0, date};
 
     QCOMPARE(tst_expenses1.getDate(), date);
+}
+
+void TestExpenses::testToString() {
+    expenses::Expenses tst_expenses{"name", 1000, {{1999, 1, 1}, {0, 0}}};
+
+    QString result_string{"name 1000 00:00 01.01.1999"};
+
+    QCOMPARE(tst_expenses.toString(), result_string);
 }

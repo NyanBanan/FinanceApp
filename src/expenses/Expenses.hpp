@@ -32,7 +32,7 @@ namespace expenses {
     private:
         QString _where;
         quint64 _size{0};
-        QDateTime _date{};
+        QDateTime _date{{1999, 1, 1}, {0, 0}};
     };
 
 }    //namespace expenses

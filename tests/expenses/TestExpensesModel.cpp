@@ -19,7 +19,7 @@ QTEST_MAIN(TestExpensesModel)
 
 void TestExpensesModel::testInsert() {
     expenses::ExpensesModel model;
-    expenses::Expenses expenses{"Test", 1000};
+    expenses::Expenses expenses{"Test", 1000, {{1999, 1, 1}, {0, 0}}};
 
     model.insertRow(0, expenses);
 
@@ -45,7 +45,7 @@ void TestExpensesModel::testRowCount() {
 
     QCOMPARE(model.rowCount(), 1);
 
-    expenses::Expenses expenses{"Test", 1000};
+    expenses::Expenses expenses{"Test", 1000, {{1999, 1, 1}, {0, 0}}};
 
     model.insertRow(0, expenses);
 

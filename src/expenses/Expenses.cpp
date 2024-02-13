@@ -37,6 +37,6 @@ namespace expenses {
     }
 
     QString Expenses::toString() const {
-        return QString("%1 %2 %3").arg(getWhere()).arg(getSize()).arg(getDate().toString());
+        return QString("%1 %2 %3").arg(getWhere()).arg(getSize()).arg(getDate().toString("hh:mm dd.MM.yyyy"));
     }
 }    //namespace expenses
