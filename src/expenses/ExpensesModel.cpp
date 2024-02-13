@@ -69,6 +69,7 @@ namespace expenses {
 
         roles[WhereRole] = "where";
         roles[SizeRole] = "size";
+        roles[DateRole] = "date";
 
         return roles;
     }
